@@ -21,7 +21,6 @@ if ( $quiz->get_total_attempts_by_user( $user_id ) ) {
 
 	$start_date = $quiz->get_start_date( $user_id );
 
-
 	$is_passing_score = $quiz->is_passing_score( $user_id, $grade );
 	$best_grade = $quiz->get_best_grade( $user_id );
 	$time = $quiz->get_total_time( $user_id );
@@ -29,7 +28,7 @@ if ( $quiz->get_total_attempts_by_user( $user_id ) ) {
 
 	$best = $quiz->get_best_quiz_attempt( $user_id );
 	$best_time = $quiz->get_total_time( $user_id, $best );
-	$best_passing = $quiz->is_passing_score( $user_id, $best );
+	$best_passing = $quiz->is_passing_score( $user_id, $best_grade );
 	?>
 
 	<div class="clear"></div>
@@ -102,7 +101,7 @@ if ( $quiz->get_total_attempts_by_user( $user_id ) ) {
 							}
 							?>
 						</h5>
-						<h6><?php printf( __( '%1$d / %1$d correct answers', 'lifterlms' ), $quiz->get_correct_answers_count( $user_id, $best ), $quiz->get_question_count() ); ?></h6>
+						<h6><?php printf( __( '%1$d / %2$d correct answers', 'lifterlms' ), $quiz->get_correct_answers_count( $user_id, $best ), $quiz->get_question_count() ); ?></h6>
 						<h6><?php printf( __( 'Date: <span class="llms_content_block">%s</span>', 'lifterlms' ), $start_date ); ?></h6>
 						<h6><?php printf( __( 'Total time: %s', 'lifterlms' ), $best_time ); ?></h6>
 					</li>
